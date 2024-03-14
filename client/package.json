@@ -1,8 +1,22 @@
 {
-  "name": "weirdowrites",
+  "name": "weirdowrites-client",
   "private": true,
   "version": "0.0.0",
+  "description": "Client Side code for Weirdo Writes Note App",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mr-warriyo/weirdo-writes.git"
+  },
+  "keywords": [
+    "Client"
+  ],
+  "author": "@Mr-warriyo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mr-warriyo/weirdo-writes/issues"
+  },
+  "homepage": "https://github.com/Mr-warriyo/weirdo-writes#readme",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

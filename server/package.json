@@ -1,0 +1,23 @@
+{
+  "name": "weirdowrites-server",
+  "version": "0.0.0",
+  "description": "Server Side code for Weirdo Writes Note App",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mr-warriyo/weirdo-writes.git"
+  },
+  "keywords": [
+    "Server"
+  ],
+  "author": "@Mr-warriyo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mr-warriyo/weirdo-writes/issues"
+  },
+  "homepage": "https://github.com/Mr-warriyo/weirdo-writes#readme"
+}
