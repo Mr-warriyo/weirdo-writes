@@ -1,0 +1,17 @@
+const express = require('express');
+const { signin } = require("../ctrls/signin.js");
+const { signup } = require("../ctrls/signup.js");
+const { OTPVV } = require("../ctrls/otp.js");
+const { forgotpass } = require("../ctrls/forgotpass.js");
+const { forgotp } = require("../ctrls/forgotp.js");
+
+// ROUTER
+const router = express.Router();
+
+router.post("/signin", signin);
+router.post("/signup", signup);
+router.post("/signup/verify", OTPVV);
+router.post("/forgotpass", forgotpass);
+router.post("/forgotpass/verify", forgotp);
+
+module.exports = router;
