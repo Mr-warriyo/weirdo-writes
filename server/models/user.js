@@ -7,8 +7,8 @@ const user = new Schema(
     password: String,
     verified: Boolean,
     _id: Number,
-    canRead: [{ type: ObjectId, ref: 'Note' }],
-    canEdit: [{ type: ObjectId, ref: 'Note '}],
+    canRead: [{ type: Object, ref: 'Note' }],
+    canEdit: [{ type: Object, ref: 'Note '}],
   },
   {
     timestamps: true,
