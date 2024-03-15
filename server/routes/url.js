@@ -1,9 +1,9 @@
 const express = require('express');
-const { signin } = require("../ctrls/signin.js");
-const { signup } = require("../ctrls/signup.js");
-const { OTPVV } = require("../ctrls/otp.js");
-const { forgotpass } = require("../ctrls/forgotpass.js");
-const { forgotp } = require("../ctrls/forgotp.js");
+const { signin } = require("../ctrls/user/signin.js");
+const { signup } = require("../ctrls/user/signup.js");
+const { OTPVV } = require("../ctrls/user/otp.js");
+const { forgotpass } = require("../ctrls/user/forgotpass.js");
+const { forgotp } = require("../ctrls/user/forgotp.js");
 
 // ROUTER
 const router = express.Router();

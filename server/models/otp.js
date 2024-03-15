@@ -1,7 +1,6 @@
 const { Schema, model } = require("mongoose");
 
 const UserOTPVerify = new Schema({
-  userId: String,
   otp: String,
   email: String,
   createdAt: Date,
