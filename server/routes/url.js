@@ -4,14 +4,25 @@ const { signup } = require("../ctrls/user/signup.js");
 const { OTPVV } = require("../ctrls/user/otp.js");
 const { forgotpass } = require("../ctrls/user/forgotpass.js");
 const { forgotp } = require("../ctrls/user/forgotp.js");
+const { createNote } = require("../ctrls/notes/createNote.js")
+const { editNote } = require("../ctrls/notes/editNote.js")
+const { deleteNote } = require("../ctrls/notes/deleteNote.js")
+const { reqNote } = require("../ctrls/notes/reqNote.js")
 
 // ROUTER
 const router = express.Router();
 
-router.post("/signin", signin);
-router.post("/signup", signup);
-router.post("/signup/verify", OTPVV);
-router.post("/forgotpass", forgotpass);
-router.post("/forgotpass/verify", forgotp);
+// USER ROUTES
+router.post("/user/signin", signin);
+router.post("/user/signup", signup);
+router.post("/user/signup/verify", OTPVV);
+router.post("/user/forgotpass", forgotpass);
+router.post("/user/forgotpass/verify", forgotp);
+
+// NOTE ROUTES
+router.post("/note/create", createNote);
+router.post("/note/delete", deleteNote);
+router.post("/note/edit", editNote);
+router.post("/note/req", reqNote);
 
 module.exports = router;
