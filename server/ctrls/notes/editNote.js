@@ -2,6 +2,7 @@ const Note = require("../../models/notes.js");
 
 const editNote = async (req, res) => {
     try {
+        console.log(req.body)
         const { noteId, token, title, content, msg, canRead, canEdit } = req.body;
 
         if (!noteId) {
@@ -12,8 +13,9 @@ const editNote = async (req, res) => {
         }
 
         const originalNote = await Note.findById(noteId);
+        console.log(originalNote)
 
-        const newCommit = {
+        const newCommit = await {
             user: token,
             timestamp: Date.now(),
             changes: {
