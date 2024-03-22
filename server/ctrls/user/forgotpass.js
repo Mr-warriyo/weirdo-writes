@@ -1,6 +1,5 @@
 const User = require("../../models/user.js")
 const UserOTPVERIFY = require("../../models/otp.js")
-const mongoose = require("mongoose")
 const bcrypt = require("bcryptjs")
 const nodemailer = require("nodemailer")
 
@@ -17,7 +16,7 @@ async function mail(to, html, subject, res) {
     })
 
     let info = await transporter.sendMail({
-      from: "kappyurls@gmail.com",
+      from: process.env.SMTP_MAIL,
       to,
       subject,
       html,
@@ -117,7 +116,7 @@ const forgotpass = async (req, res) => {
 async function sendVeriEmail(result, res) {
   try {
     const otp = `${Math.floor(100000 + Math.random() * 900000)}`
-    var subject = "KAPPY URLs"
+    var subject = "Weirdo Writes"
     var html = `<div style="text-align: center;"> <h1> Hello ${result.name}! </h1> <p> Here's Your OTP: <b>${otp}</b> </p> <h3> This OTP will expire in 30mins. </h3></div>`
     User.deleteMany({ email: result.email })
     const newOTPVerify = await new UserOTPVERIFY({

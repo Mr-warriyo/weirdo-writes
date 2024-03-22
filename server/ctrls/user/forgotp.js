@@ -1,8 +1,6 @@
 const User = require("../../models/user.js")
 const UserOTPVERIFY = require("../../models/otp.js")
-const mongoose = require("mongoose")
 const bcrypt = require("bcryptjs")
-const nodemailer = require("nodemailer")
 
 const forgotp = async (req, res) => {
   try {

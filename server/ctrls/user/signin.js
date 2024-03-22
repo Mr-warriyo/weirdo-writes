@@ -1,6 +1,4 @@
 const User = require("../../models/user.js")
-const mongoose = require("mongoose")
-const nodemailer = require("nodemailer")
 const bcrypt = require("bcryptjs")
 
 const signin = async (req, res) => {

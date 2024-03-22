@@ -9,7 +9,7 @@ require('dotenv').config();
 const { MONGO_USER, MONGO_PASS } = process.env;
 
 // MONGOOSE DB CONNECTION
-connectDB(`mongodb+srv://${MONGO_USER}:${MONGO_PASS}@main.ue2vhrg.mongodb.net/`);
+connectDB(`mongodb+srv://${MONGO_USER}:${MONGO_PASS}@main.ue2vhrg.mongodb.net/main`);
 
 // EXPRESS APP
 const app = express();
