@@ -1,34 +1,79 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react';
+import './App.css';
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Link,
+} from "react-router-dom";
+import LoginPage from './components/user/login';
+import SignupPage from './components/user/signup';
+import ForgotPassPage from './components/user/forgotpass';
+import DashBoardPage from "./components/notes/dashboard";
+
+const router = createBrowserRouter([
+  {
+    path: "/*",
+    element: <React.Fragment>
+      <div className='glass-container min-h-screen flex flex-col items-center justify-center'>
+      <h1 className="mb-4 text-4xl font-extrabold leading-none md:text-5xl text-center">
+        Weirdo Writes
+        <br />
+        <br />
+      </h1>
+      <p className="mb-3 text-lg font-extrabold leading-none md:text-lg text-center">
+        Looks like the URL you search for is Incorrect, tap the button below to be redirected to Main Site
+      </p>
+      <br />
+      <Link to="/" className="transition ease-in-out delay-125 bg-blue-500 hover:scale-125 hover:bg-indigo-500 duration-300 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent py-2 px-4 rounded-full">
+        Return Back!
+      </Link> 
+    </div>
+    </React.Fragment>
+  },
+  {
+    path: "/",
+    element: <React.Fragment>
+    <div className='bg-scroll glass-container min-h-screen flex flex-col items-center justify-center'>
+      <h1 className="mb-4 text-4xl font-extrabold leading-none md:text-5xl text-center">
+        Weirdo Writes
+        <br />
+        <br />
+      </h1>
+      <p className="mb-3 text-lg font-extrabold leading-none md:text-lg text-center">
+        Your secure, real-time notes hub. Edit, share with precision. <br />
+        Speedy, authenticated, fostering teamwork and productivity. Experience seamless collaboration now!
+      </p>
+      <br />
+      <Link to="/login" className="transition ease-in-out delay-125 bg-blue-500 hover:scale-125 hover:bg-indigo-500 duration-300 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent py-2 px-4 rounded-full">
+        Start Notng!
+      </Link> 
+    </div>
+  </React.Fragment>,
+  },
+  {
+     path: "/login",
+     element: <LoginPage />,
+  },
+  {
+    path: "/signup",
+    element: <SignupPage />,
+  }, 
+  {
+    path: "/forgotpass",
+    element: <ForgotPassPage />,
+  }, 
+  {
+    path: "/dashboard",
+    element: <DashBoardPage />
+  }
+]);
+
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <React.Fragment>
+      <RouterProvider router={router} />
+    </React.Fragment>
   )
 }
 
