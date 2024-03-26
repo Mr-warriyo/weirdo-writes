@@ -1,5 +1,7 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import Card from './card'; 
+import Pagination from './page'; 
 
 const DashBoardPage = () => {
     /* const [phone, setPhone] = useState(false);
@@ -25,12 +27,31 @@ const DashBoardPage = () => {
         name,
         email,
         token
-      } = window.localStorage || undefined;
+    } = window.localStorage || undefined;
     
-      if (!name || !email || !token) {
+    if (!name || !email || !token) {
         window.location.href = "/login"
         alert("No Session found! Redirecting to Login...")
-      }
+    }
+
+    const [notes, setNotes] = useState([
+        { id: 1, title: 'Note 1', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' },
+        { id: 2, title: 'Note 2', content: 'Praesent vehicula mauris id mauris eleifend, et suscipit elit aliquam.' },
+        { id: 3, title: 'Note 3', content: 'Sed vel est sit amet urna tristique mollis.' },
+        { id: 4, title: 'Note 4', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' },
+        { id: 5, title: 'Note 5', content: 'Praesent vehicula mauris id mauris eleifend, et suscipit elit aliquam.' },
+        { id: 6, title: 'Note 6', content: 'Sed vel est sit amet urna tristique mollis.' },
+        { id: 7, title: 'Note 7', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' },
+        { id: 8, title: 'Note 8', content: 'Praesent vehicula mauris id mauris eleifend, et suscipit elit aliquam.' },
+        { id: 9, title: 'Note 9', content: 'Sed vel est sit amet urna tristique mollis.' },
+    ]);
+
+    const [currentPage, setCurrentPage] = useState(1);
+    const notesPerPage = 3;
+    const indexOfLastNote = currentPage * notesPerPage;
+    const indexOfFirstNote = indexOfLastNote - notesPerPage;
+    const currentNotes = notes.slice(indexOfFirstNote, indexOfLastNote);
+    const paginate = pageNumber => setCurrentPage(pageNumber);
 
     return (
         <Fragment>
@@ -71,13 +92,26 @@ const DashBoardPage = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="flex items-center justify-center h-screen">
+                    <div className="flex m-8 justify-center h-1/4">
                         <div className="bg-scroll bg-transparent text-red-800">
-                            <h1>
-                                Hello {name}
+                            <h1 className="font-headingM font-extrabold text-5xl">
+                                Welcome {name} !
                             </h1>
                         </div>
                     </div>
+                    
+                    <div className="flex m-8 justify-center h-screen">
+                        {currentNotes.map(note => (
+                            <Card key={note.id} note={note} />
+                        ))}
+                    </div>
+                        
+                    <Pagination
+                        notesPerPage={notesPerPage}
+                        totalNotes={notes.length}
+                        paginate={paginate}
+                        currentPage={currentPage}
+                    />
                 </div>
             </div>
         </Fragment>
