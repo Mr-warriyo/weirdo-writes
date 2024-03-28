@@ -4,9 +4,9 @@ import Card from './card';
 import Pagination from './page'; 
 
 const DashBoardPage = () => {
-    /* const [phone, setPhone] = useState(false);
-    const [showSidebar, setShowSidebar] = useState(false);
-
+    const [phone, setPhone] = useState(false);
+    /* const [showSidebar, setShowSidebar] = useState(false);
+ */
     useEffect(() => {
         const handleResize = () => {
             setPhone(window.innerWidth <= 768);
@@ -19,7 +19,7 @@ const DashBoardPage = () => {
         };
     }, []);
 
-    const toggleSidebar = () => {
+    /* const toggleSidebar = () => {
         setShowSidebar(!showSidebar);
     }; */
 
@@ -36,8 +36,8 @@ const DashBoardPage = () => {
 
     const [notes, setNotes] = useState([
         { id: 1, title: 'Note 1', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' },
-        { id: 2, title: 'Note 2', content: 'Praesent vehicula mauris id mauris eleifend, et suscipit elit aliquam.' },
-        { id: 3, title: 'Note 3', content: 'Sed vel est sit amet urna tristique mollis.' },
+        { id: 2, title: 'Note 2', content: 'Praesent vehicula mauris id mauris eleifend, e.' },
+        { id: 3, title: 'Note 3', content: 'Sed vel est sit amet urna tristique mollis..............' },
         { id: 4, title: 'Note 4', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' },
         { id: 5, title: 'Note 5', content: 'Praesent vehicula mauris id mauris eleifend, et suscipit elit aliquam.' },
         { id: 6, title: 'Note 6', content: 'Sed vel est sit amet urna tristique mollis.' },
@@ -100,7 +100,7 @@ const DashBoardPage = () => {
                         </div>
                     </div>
                     
-                    <div className="flex m-8 justify-center h-screen">
+                    <div className={`flex m-8 justify-center ${phone ? "md-block flex-col ": "h-screen flex-row"}`}>
                         {currentNotes.map(note => (
                             <Card key={note.id} note={note} />
                         ))}
