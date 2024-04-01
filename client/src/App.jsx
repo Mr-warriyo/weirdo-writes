@@ -10,6 +10,8 @@ import SignupPage from './components/user/signup';
 import ForgotPassPage from './components/user/forgotpass';
 import DashBoardPage from "./components/notes/dashboard";
 import Notes from './components/notes/edit'
+import Create from "./components/notes/create"
+import Delete from "./components/notes/delete"
 
 function App() {
   const router = createBrowserRouter([
@@ -69,10 +71,16 @@ function App() {
       element: <DashBoardPage />
     },
     {
+      path: "/create",
+      element: <Create />
+    },
+    {
       path: "/notes/:id",
-      element: <React.Fragment>
-        <Notes />
-      </React.Fragment>
+      element: <Notes />
+    },
+    {
+      path: "/notes/delete/:id",
+      element: <Delete />
     }
   ]);
 

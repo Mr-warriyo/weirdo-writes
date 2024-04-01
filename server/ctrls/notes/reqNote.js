@@ -1,5 +1,3 @@
-// When User Requests Note on Dashboard
-
 const User = require("../../models/user.js");
 const Note = require("../../models/notes.js");
 
@@ -8,55 +6,47 @@ const reqNote = async (req, res) => {
         const { token } = req.body;
 
         if (!token) {
-            return res.json({
+            return res.status(400).json({
                 status: "FAILED",
                 message: "User ID is missing!"
             });
         }
 
-        const user = await User.findById({
-            _id: token
-        });
+        // Find the user with the provided token
+        const user = await User.findById(token);
 
         if (!user) {
-            return res.json({
+            return res.status(404).json({
                 status: "FAILED",
                 message: "User not found!"
             });
         }
 
-        const userNotes = await Note.find({
-            $or: [
-                { owner: token },
-                { canRead: token },
-                { canEdit: token }
-            ]
-        });
+        // Extract note IDs from the user's permissions
+        const canReadNoteIds = user.canRead || [];
+        const canEditNoteIds = user.canEdit || [];
 
-        if (!userNotes.length) {
-            return res.json({
-                status: "FAILED",
-                message: "No notes found for this user!"
-            });
-        }
+        // Get notes based on permissions
+        const readNotes = await Note.find({ _id: { $in: canReadNoteIds } });
+        const editNotes = await Note.find({ _id: { $in: canEditNoteIds } });
 
-        const permissions = userNotes.map(note => ({
-            noteId: note._id,
-            canRead: note.canRead,
-            canEdit: note.canEdit
-        }));
+        // Find unique notes between canRead and canEdit
+        const uniqueNoteIds = [...new Set([...canReadNoteIds, ...canEditNoteIds])];
+        const unqNote = await Note.find({ _id: { $in: uniqueNoteIds } });
 
         res.json({
             status: "SUCCESS",
             message: "Notes requested successfully!",
-            permissions
+            readNotes,
+            editNotes,
+            unqNote
         });
     } catch (error) {
-        res.json({
-            status: "FAILED",
-            message: error.message
-        });
         console.error(error);
+        res.status(500).json({
+            status: "FAILED",
+            message: "Internal server error"
+        });
     }
 };
 

@@ -12,10 +12,8 @@ const deleteNote = async (req, res) => {
             });
         }
 
-        // Delete the note
         const deletedNote = await Note.findByIdAndDelete(noteId);
 
-        // If note is not found
         if (!deletedNote) {
             return res.json({
                 status: "FAILED",
@@ -23,7 +21,6 @@ const deleteNote = async (req, res) => {
             });
         }
 
-        // Remove the note ID from the canRead and canEdit arrays of users
         await User.updateMany(
             { $or: [{ canRead: noteId }, { canEdit: noteId }] },
             { $pull: { canRead: noteId, canEdit: noteId } }

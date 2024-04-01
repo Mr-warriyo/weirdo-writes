@@ -1,9 +1,42 @@
+// when note is created
+
 const Note = require("../../models/notes.js");
 const User = require("../../models/user.js");
+const { userID } = require("./ids");
+
+const isValidIds = async (ids) => {
+    try {
+        const allUserIds = await userID();
+        const uniqueIds = [...new Set(ids.map(id => parseInt(id, 10)))];
+
+        for (const id of uniqueIds) {
+            if (!allUserIds.includes(id)) {
+                return false;
+            }
+        }
+
+        return true;
+
+    } catch (error) {
+        console.error("Error validating IDs:", error);
+        return false;
+    }
+};
 
 const createNote = async (req, res) => {
     try {
-        const { canEdit, canRead, title, content, owner } = req.body;
+        let { canEdit, canRead, title, content, owner } = req.body;
+
+        canRead = canRead.split(", ");
+        canEdit = canEdit.split(", ");
+
+        const areIdsValid = await isValidIds([...canEdit, ...canRead, owner]);
+        if (!areIdsValid) {
+            return res.json({
+                status: "FAILED",
+                message: "Invalid user IDs for canEdit, canRead, or owner."
+            });
+        }
 
         if (!canEdit || !canRead || !title || !content || !owner) {
             return res.json({
@@ -12,10 +45,10 @@ const createNote = async (req, res) => {
             });
         }
 
-        // Create the note
         const note = new Note({
             title,
             content,
+            noteC: content,
             owner,
             canRead,
             canEdit,
@@ -24,7 +57,6 @@ const createNote = async (req, res) => {
 
         await note.save();
 
-        // Update the user schemas
         await User.updateMany(
             { _id: { $in: canRead } },
             { $addToSet: { canRead: note._id } }

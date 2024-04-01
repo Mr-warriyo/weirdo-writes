@@ -6,6 +6,7 @@ server/package-lock.json
 # Client
 client/node_modules/
 client/package-lock.json
+client/src/env.js
 
 # Logs
 logs

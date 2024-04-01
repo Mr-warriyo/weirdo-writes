@@ -3,14 +3,14 @@ const Note = require("../../models/notes.js");
 const editNote = async (req, res) => {
     try {
         console.log(req.body)
-        const { noteId, token, title, content, msg, canRead, canEdit } = req.body;
+        const { noteId, token, title, content, noteC, canRead, canEdit } = req.body;
 
         if (!noteId) {
             return res.json({
                 status: "FAILED",
                 message: "Note ID is missing!"
             });
-        }
+        };
 
         const originalNote = await Note.findById(noteId);
         console.log(originalNote)
@@ -20,14 +20,14 @@ const editNote = async (req, res) => {
             timestamp: Date.now(),
             changes: {
                 title: originalNote.title,
-                msg,
+                noteC,
                 canRead: originalNote.canRead,
                 canEdit: originalNote.canEdit
             }
         };
 
         await Note.findByIdAndUpdate(noteId, {
-            $set: { title, content, canRead, canEdit },
+            $set: { title, content, noteC, canRead, canEdit },
             $push: { commits: newCommit }
         });
 

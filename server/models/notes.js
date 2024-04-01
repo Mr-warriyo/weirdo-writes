@@ -4,6 +4,7 @@ const noteSchema = new Schema(
     {
         title: { type: String, required: true },
         content: { type: String, required: true },
+        noteC: { type: String, required: false },
         owner: { type: Object, ref: 'User', required: true },
         canRead: [{ type: Object, ref: 'User' }],
         canEdit: [{ type: Object, ref: 'User'}],

@@ -39,7 +39,7 @@ const signin = async (req, res) => {
             status: "SUCCESS",
             _id: result[0]._id,
             name: result[0].name,
-            mail: result[0].mail,
+            mail: result[0].email,
             message: "Trying to LogIn...",
           })
         }
