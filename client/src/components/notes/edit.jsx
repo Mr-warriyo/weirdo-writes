@@ -19,7 +19,8 @@ const Notes = () => {
                         "Content-Type": "application/json",
                     },
                     body: JSON.stringify({
-                        id
+                        id,
+                        token
                     })
                 })
                 const data = await response.json()

@@ -1,9 +1,11 @@
+// For when note is being deleted
+
 const Note = require("../../models/notes.js");
 const User = require("../../models/user.js");
 
 const deleteNote = async (req, res) => {
     try {
-        const { noteId } = req.body;
+        const { noteId, token } = req.body;
 
         if (!noteId) {
             return res.json({
@@ -12,14 +14,25 @@ const deleteNote = async (req, res) => {
             });
         }
 
-        const deletedNote = await Note.findByIdAndDelete(noteId);
+        const note = await Note.findById({
+            _id: noteId
+        });
 
-        if (!deletedNote) {
+        if (!note) {
             return res.json({
                 status: "FAILED",
                 message: "Note not found!"
             });
         }
+
+        if (note.owner !== token) {
+            return res.json({
+                status: "FAILED",
+                message: "Unauthorized: You are not the owner of this note!"
+            });
+        }
+
+        const deletedNote = await Note.findByIdAndDelete(noteId);
 
         await User.updateMany(
             { $or: [{ canRead: noteId }, { canEdit: noteId }] },

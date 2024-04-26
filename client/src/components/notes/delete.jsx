@@ -3,15 +3,18 @@ import { Link, useParams } from "react-router-dom";
 
 const Delete = () => {
     const { id } = useParams()
+    const token = window.localStorage.getItem("token")
 
     const delNote = async () => {
+        console.log(id)
         const response = await fetch("http://localhost:8081/note/delete", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                noteId: id
+                noteId: id,
+                token
             })
         })
         const data = await response.json()

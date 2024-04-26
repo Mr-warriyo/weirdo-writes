@@ -1,10 +1,10 @@
-// To validate Note
+// For editing Note
 
 const Note = require("../../models/notes");
 
 const noteID = async (req, res) => {
     try {
-        const { id } = req.body;
+        const { id, token } = req.body;
 
         const notes = await Note.find({}, "_id title content noteC owner canRead canEdit commits");
         const noteIds = notes.map(note => note._id.toString());
@@ -17,6 +17,13 @@ const noteID = async (req, res) => {
         }
 
         const note = notes.find(note => note._id.toString() === id);
+
+        if (!note.canEdit.includes(token)) {
+            return res.json({
+                status: "FAILED",
+                message: "Unauthorized access: You do not have permission to edit this note."
+            });
+        }
 
         return res.json({
             status: "SUCCESS",

@@ -13,7 +13,9 @@ const reqNote = async (req, res) => {
         }
 
         // Find the user with the provided token
-        const user = await User.findById(token);
+        const user = await User.findById({
+            _id: token
+        });
 
         if (!user) {
             return res.status(404).json({
