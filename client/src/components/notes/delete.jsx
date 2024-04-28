@@ -30,7 +30,8 @@ const Delete = () => {
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
-                    flexDirection: "column"
+                    flexDirection: "column",
+                    color: "white"
                 }}
             > 
                 <h1>

@@ -49,7 +49,6 @@ const DashBoardPage = () => {
                 const data = await response.json();
                 if (data.status === "SUCCESS") {
                     setNotes(data.editNotes);
-                    console.log(data.editNotes, data.readNotes, data.unqNote)
                 } else {
                     alert(data.message);
                 }
