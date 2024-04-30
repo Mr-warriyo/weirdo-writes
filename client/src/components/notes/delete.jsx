@@ -7,7 +7,7 @@ const Delete = () => {
 
     const delNote = async () => {
         console.log(id)
-        const response = await fetch("http://localhost:8081/note/delete", {
+        const response = await fetch(`https://weirdo-writes.onrender.com/note/delete`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

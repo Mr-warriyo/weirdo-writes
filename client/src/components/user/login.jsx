@@ -19,7 +19,7 @@ const LoginPage = () => {
   const submit = async (e) => {
     e.preventDefault()
     try {
-      const response = await fetch("http://localhost:8081/user/signin", {
+      const response = await fetch(`https://weirdo-writes.onrender.com/user/signin`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

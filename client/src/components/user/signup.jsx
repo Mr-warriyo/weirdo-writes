@@ -11,7 +11,7 @@ const SignupPage = () => {
   const submit = async (e) => {
     e.preventDefault()
     try {
-      const response = await fetch("http://localhost:8081/user/signup/verify", {
+      const response = await fetch(`https://weirdo-writes.onrender.com/user/signup/verify`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -31,7 +31,7 @@ const SignupPage = () => {
   const sendOtp = async (e) => {
     e.preventDefault()
     try {
-      const response = await fetch("http://localhost:8081/user/signup", {
+      const response = await fetch(`https://weirdo-writes.onrender.com/user/signup`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

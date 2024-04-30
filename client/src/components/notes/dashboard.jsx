@@ -37,7 +37,7 @@ const DashBoardPage = () => {
     useEffect(() => {
         const fetchNotes = async () => {
             try {
-                const response = await fetch("http://localhost:8081/note/req", {
+                const response = await fetch(`https://weirdo-writes.onrender.com/note/req`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"

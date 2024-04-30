@@ -13,7 +13,7 @@ const Notes = () => {
     useEffect(() => {
         const fetchNote = async () => {
             try {
-                const response = await fetch("http://localhost:8081/note/nId", {
+                const response = await fetch(`https://weirdo-writes.onrender.com/note/nId`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
@@ -46,7 +46,7 @@ const Notes = () => {
         if (editorRef.current) {
             const noteC = await editorRef.current.getContent("editor");
             const { title, content, canRead, canEdit } = note;
-            const response = await fetch("http://localhost:8081/note/edit", {
+            const response = await fetch(`https://weirdo-writes.onrender.com/note/edit`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

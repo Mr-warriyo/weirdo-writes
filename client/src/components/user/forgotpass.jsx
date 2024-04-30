@@ -10,7 +10,7 @@ const ForgotPassPage = () => {
   const verify = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:8081/user/forgotpass", {
+      const response = await fetch(`https://weirdo-writes.onrender.com/user/forgotpass`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -33,7 +33,7 @@ const ForgotPassPage = () => {
   const submit = async (e) => {
     e.preventDefault()
     try {
-      const response = await fetch("http://localhost:8081/user/forgotpass/verify", {
+      const response = await fetch(`https://weirdo-writes.onrender.com/user/forgotpass/verify`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
