@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Card = ({ note }) => {
     const shareNote = () => {
-        const URL = `https://weirdo-writes.netlify.com/notes/${note._id}`
+        const URL = `https://weirdo-writes.netlify.app/notes/${note._id}`
         navigator.clipboard.writeText(URL)
         alert("Copied Note URL to CLipBoard, Share it with anyone; make sure their IDS are added to canRead/canEdit . \n" + URL)
     }

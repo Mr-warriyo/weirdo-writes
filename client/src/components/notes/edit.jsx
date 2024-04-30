@@ -9,6 +9,7 @@ const Notes = () => {
     const token = window.localStorage.getItem("token")
     const [noteC, setNoteC] = useState("")
     const TINY_MCE = process.env.TINY_MCE
+    console.log(process.env.TINY_MCE)
 
     useEffect(() => {
         const fetchNote = async () => {
@@ -76,7 +77,6 @@ const Notes = () => {
         return null;
     }
 
-    console.log(note)
 
     return (
         <div
