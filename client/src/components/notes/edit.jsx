@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { TINY_MCE } from "../../env.js"
 import { Editor } from '@tinymce/tinymce-react';
 
 const Notes = () => {
@@ -9,6 +8,7 @@ const Notes = () => {
     const [note, setNote] = useState()
     const token = window.localStorage.getItem("token")
     const [noteC, setNoteC] = useState("")
+    const TINY_MCE = process.env.TINY_MCE
 
     useEffect(() => {
         const fetchNote = async () => {
