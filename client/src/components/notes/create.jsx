@@ -13,7 +13,6 @@ const Create = () => {
       // Append owner id to canRead and canEdit arrays
       const canReadWithOwner = (canRead ? canRead + ',' : '') + owner;
       const canEditWithOwner = (canEdit ? canEdit + ',' : '') + owner;
-      console.log(canReadWithOwner, canEditWithOwner, canRead, canEdit, owner);
   
       const response = await fetch(`https://weirdo-writes.onrender.com/note/create`, {
         method: "POST",
