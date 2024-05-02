@@ -1,7 +1,6 @@
 {
   "name": "weirdowrites-client",
-  "private": true,
-  "version": "0.0.0",
+  "version": "5.0.2",
   "description": "Client Side code for Weirdo Writes Note App",
   "type": "module",
   "repository": {
