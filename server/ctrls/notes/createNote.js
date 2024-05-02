@@ -27,8 +27,8 @@ const createNote = async (req, res) => {
     try {
         let { canEdit, canRead, title, content, owner } = req.body;
 
-        canRead = canRead.split(", ");
-        canEdit = canEdit.split(", ");
+        canRead = canRead.split(",").map(id => id.trim());
+        canEdit = canEdit.split(",").map(id => id.trim());
 
         const areIdsValid = await isValidIds([...canEdit, ...canRead, owner]);
         if (!areIdsValid) {

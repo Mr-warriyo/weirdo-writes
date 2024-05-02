@@ -1,6 +1,6 @@
 {
   "name": "weirdowrites-server",
-  "version": "0.0.0",
+  "version": "5.0.2",
   "description": "Server Side code for Weirdo Writes Note App",
   "main": "server.js",
   "scripts": {

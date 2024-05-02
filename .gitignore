@@ -6,7 +6,7 @@ server/package-lock.json
 # Client
 client/node_modules/
 client/package-lock.json
-client/src/env.js
+client/src/.env
 
 # Logs
 logs
@@ -19,8 +19,6 @@ lerna-debug.log*
 
 node_modules
 .env
-dist
-dist-ssr
 *.local
 
 # Editor directories and files
