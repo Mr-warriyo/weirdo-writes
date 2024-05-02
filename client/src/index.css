@@ -9,6 +9,7 @@
     rgba(0, 0, 0, 0.7), 
     rgba(0, 0, 0, 0.7)
     ), url("./assets/home-bg.jpg") fixed;
+  background-size: cover;
 }
 
 form .halo {
@@ -29,4 +30,10 @@ form .halo {
 
 .glass-container h1 {
   color: rgb(225 29 72);
+}
+
+@media only screen and (max-width: 768px) {
+  .smallT {
+      font-size: 30px;
+  }
 }

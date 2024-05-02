@@ -8,6 +8,7 @@ import {
 import LoginPage from './components/user/login';
 import SignupPage from './components/user/signup';
 import ForgotPassPage from './components/user/forgotpass';
+import ProfilePage from './components/user/profile';
 import DashBoardPage from "./components/notes/dashboard";
 import Notes from './components/notes/edit'
 import Create from "./components/notes/create"
@@ -65,7 +66,11 @@ function App() {
     {
       path: "/forgotpass",
       element: <ForgotPassPage />,
-    }, 
+    },
+    {
+      path: "/profile",
+      element: <ProfilePage />,
+    },
     {
       path: "/dashboard",
       element: <DashBoardPage />
@@ -81,7 +86,7 @@ function App() {
     {
       path: "/notes/delete/:id",
       element: <Delete />
-    }
+    },
   ]);
 
   return (
