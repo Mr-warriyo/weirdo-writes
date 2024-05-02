@@ -102,7 +102,7 @@ const Create = () => {
             />
             <br />
             <br />
-            <p className="text-white text-xs italic">Split the Numerical IDS with ","</p>
+            <p className="text-white text-xs italic">Split the Numerical IDS with ",", find IDS in profile of user.</p>
           </div>
           <div className="mb-4">
             <label htmlFor="text" className="block text-sm font-medium text-gray-800">
@@ -121,7 +121,7 @@ const Create = () => {
             />
             <br />
             <br />
-            <p className="text-white text-xs italic">Split the Numerical IDS with ","</p>
+            <p className="text-white text-xs italic">Split the Numerical IDS with ",", find IDS in profile of user</p>
           </div>
           
           <button type='submit' className="w-full bg-blue-500 text-white py-2 rounded-xl hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300">
