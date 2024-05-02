@@ -77,6 +77,20 @@ const ProfilePage = () => {
                             Logout
                         </button>
                     </div>
+                    <div style={{ textAlign: 'center', marginTop: '20px' }}>
+                        <Link
+                            to="/dashboard"
+                            style={{
+                                backgroundColor: "red",
+                                padding: "10px",
+                                borderRadius: "25px",
+                                color: "white",
+                                cursor: "pointer"
+                            }}
+                        >
+                            Go Back to DashBoard
+                        </Link>
+                    </div>
                 </div>
             </div>
         </React.Fragment>
