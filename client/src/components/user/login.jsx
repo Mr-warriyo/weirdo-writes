@@ -72,14 +72,13 @@ const LoginPage = () => {
             className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring focus:border-blue-300"
             placeholder="Enter your password"
             onChange={(e) => setPass(e.target.value)}
-            maxLength={10}
             minLength={8}
-            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,10}$"
+            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,100}$"
             required
           />
           <br />
           <br />
-          <p className="text-white text-xs italic">Minimum 8 and maximum 10 characters, at Least One Uppercase Letter, One Lowercase letter, One Number and One Special Character</p>
+          <p className="text-white text-xs italic">Minimum 8 characters, at Least One Uppercase Letter, One Lowercase letter, One Number and One Special Character</p>
         </div>
         <button type='submit' className="w-full bg-blue-500 text-white py-2 rounded-xl hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300">
           Login
